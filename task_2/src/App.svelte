@@ -1,17 +1,6 @@
 <script lang="ts">
 	let currencyIn: string = 'USD'
 	let currencyOut: string = 'RUB'
-	let currencyOptions = [
-		'RUB',
-		'USD',
-		'EUR',
-		'GPB',
-		'AED',
-		'THB',
-		'JPY',
-		'CNY',
-		'KZT',
-	]
 	let amountIn: number = 0
 	let amountOut: number = 0
 	$: amountOut
@@ -54,17 +43,21 @@
 	<section class="inputSection">
 		<fieldset>
 			<label for="curr-from">FROM</label>
-			<select id="curr-from" name="curr-from" bind:value={currencyIn}>
-				{#each currencyOptions as option}
-					<option value={option}>{option}</option>
-				{/each}
-			</select>
+			<input
+				id="curr-from"
+				name="curr-from"
+				type="text"
+				bind:value={currencyIn}
+				on:input={convertCurrency}
+			/>
 			<label for="curr-to">TO</label>
-			<select id="curr-to" name="curr-to" bind:value={currencyOut}>
-				{#each currencyOptions as option}
-					<option value={option}>{option}</option>
-				{/each}
-			</select>
+			<input
+				id="curr-to"
+				name="curr-to"
+				type="text"
+				bind:value={currencyOut}
+				on:input={convertCurrency}
+			/>
 		</fieldset>
 		<fieldset>
 			<label for="amount">AMOUNT</label>
@@ -117,8 +110,7 @@
 		margin: 0.5rem 0;
 	}
 
-	input,
-	select {
+	input {
 		margin: 0;
 		width: 60%;
 		min-height: 2em;
@@ -126,10 +118,4 @@
 		border: 1px solid #0a0a23;
 		color: #ffffff;
 	}
-
-	/* select {
-		margin: 0;
-		width: 60%;
-		min-height: 2em;
-	} */
 </style>
