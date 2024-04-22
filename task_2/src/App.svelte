@@ -5,7 +5,7 @@
 	let amountOut: number = 0
 	$: amountOut
 
-	const API_TOKEN = 'cdc4f94dac9c1e56f4a4060a'
+	const API_TOKEN = import.meta.env.VITE_API_TOKEN
 
 	async function convertCurrency(): Promise<void> {
 		if (!currencyIn || !currencyOut || !amountIn) return
