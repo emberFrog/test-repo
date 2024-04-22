@@ -22,7 +22,12 @@
 			const data: { conversion_rates: { [key: string]: number } } =
 				await response.json()
 			const rate = data.conversion_rates[currencyOut]
-			amountOut = amountIn * rate
+
+			if (amountIn < 0) {
+				alert('Enter the correct value.')
+			} else {
+				amountOut = amountIn * rate
+			}
 		} catch (error) {
 			console.error('Error: currency conversion', error)
 		}
